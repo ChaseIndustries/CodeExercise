@@ -1,0 +1,43 @@
+.cta-quote {
+  background:#0f434c;
+  color:darken(white, 10%);
+  padding:40px 15px;
+  div {
+    max-width:900px;
+    margin:auto;
+    position: relative;
+  }
+  .button.cta {
+    background:#1da1db;
+    color:white;
+    text-align: center;
+    width:20%;
+    padding-top:20px;
+    padding-bottom:20px;
+    border-radius: 5px; 
+  }
+  p, .button {
+    display:inline-block;
+    vertical-align: middle;
+  }
+  // Would usually use stored $breakpoints variables for this but 
+  // since this is a just a code exercise I used static breakpoints 
+  @media(max-width:1024px) {
+    .button.cta {
+      margin:auto;
+    }
+  }
+  @media(min-width:1025px) {
+    .button.cta {
+      // this would also be a mixin named @include absolute-y()
+      // but again, only using once here because code exercise
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      right:0;
+    }
+    p {
+      width:70%;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.testimonial {
+  background:darken(white, 5%);
+  width:100%;
+  padding:40px 15px;
+  .testimonial__inner {
+    position: relative;
+    max-width:900px;
+    padding-left:30px;
+    padding-top:10px;
+    border-left:2px solid orange;
+    margin:auto;
+    @media(max-width:1024px) {
+      margin-left:20px;
+    }
+    &::before {
+      content:'"';
+      font-size:30px;
+      width:40px;
+      line-height:40px;
+      border-radius: 50%;
+      position:absolute;
+      left:-23px;
+      top:0;
+      background:orange;
+      color:white;
+      text-align: center;
+      border:2px solid white;
+    }
+    &::after {
+      content:'';
+      border-radius: 50%;
+      background:orange;
+      bottom:0;
+      left:-6px;
+      width:10px;
+      height:10px;
+      position: absolute;
+    }
+  }
+  span {
+    font-family:"Montserrat";
+    font-size:.9rem;
+  }
+}

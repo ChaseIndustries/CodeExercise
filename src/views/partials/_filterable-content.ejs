@@ -1,41 +1,83 @@
-<section>
+<section class="filterable-content">
 	<div>
 		<div>
 			<div>
-				<div>
-					<div>
-						<span>Genre</span>
-						<div></div>
+				<div class="filters">
+					<div class="filter" data-filter="genre">
+						<span class="select-label">Genre</span>
+						<div class="select-list">
+						<ul class="options" data-option="genre">
+  						<% var usedGenres = []; %>
+  						<% for(var i=0; i < data.media.length; i++){ %>
+    						<% var item = data.media[i]; %>
+    						<% var genres = item.genre; %>
+    						<% for(var j=0;j < genres.length;j++){ %>
+    						  <% var genre = genres[j]; %>
+    						  <% if(usedGenres.indexOf(genre) === -1){ %>
+                    <% usedGenres.push(genre); %>
+                  <% } %>
+                <% } %>
+              <% } %>
+              <% usedGenres = usedGenres.sort() %>
+              <% for(var i=0; i < usedGenres.length; i++){ %>
+                <% var genre = usedGenres[i]; %>
+                <li class="option"><input type="checkbox" value="<%= genre %>" id="filter-<%= genre %>" /><label for="filter-<%= genre %>"><%= genre %></label></li>
+              <% } %>
+            </ul>
+            </div>
 					</div>
-					<div>
-						<span>Year</span>
-						<div></div>
+					<div class="filter" data-filter="year">
+						<span class="select-label">Year</span>
+						<div class="select-list">
+            <ul class="options" data-option="year">
+  						<% var usedYears = []; %>
+  						<% for(var i=0; i < data.media.length; i++){ %>
+    					<% var item = data.media[i]; %>
+              <% var year = item.year; %>
+  		  		  <% if(usedYears.indexOf(year) === -1){  %>
+    		  		    <% usedYears.push(year) %>
+                <% } %>
+              <% } %>
+              <% usedYears = usedYears.sort(function(a, b){return a - b}); %>
+              <% for(var i=0; i < usedYears.length; i++){ %>
+                <% var year = usedYears[i]; %>
+              <li class="option"><input type="checkbox" value="<%= year %>" id="<%= year %>" /><label for="<%= year %>"><%= year %></label></li>
+              <% } %>
+            </ul>
+            </div>
 					</div>
-					<div>
+					<div class="filter search" data-filter="search">
 						<input type="text">
 					</div>
 				</div>
-				<div>
-					<div>
-						<input type="radio">
-						<label>Movies</label>
-					</div>
-					<div>
-						<input type="radio">
-						<label>Books</label>
-					</div>
-					<div >
-						<a href="#">Clear filters</a>
-					</div>
-				</div>
+				<div class="filters">
+          <div class="filter options" data-filter="type">
+  						<input type="radio" value="movie" name="type[]" id="filter-movies">
+  						<label for="filter-movies">Movies</label>
+  					</div>
+  					<div class="filter options" data-filter="type">
+  						<input type="radio" value="book" name="type[]" id="filter-books">
+  						<label for="filter-books">Books</label>
+  					</div>
+  					<div class="clear-filters">
+  						<a href="#">Clear filters</a>
+  					</div>
+  				</div>
 			</div>
 		</div>
 	</div>
-
 	<div>
 		<div>
-			<div>
-				<ul></ul>
+			<div >
+				<ul class="media-list">
+				  <% for(var i=0;i < data.media.length;i++){ %>
+				  <li data-genre="<%= data.media[i].genre.join(' ') %>" data-year="<%=data.media[i].year %>" data-type="<%=data.media[i].type %>">
+				  <div class="poster"><img src="<%= data.media[i].poster %>" /></div>
+				  <div class="media-title"><h3><%=data.media[i].title %> (<%=data.media[i].year %>)</h3></div>
+				  <div class="media-genres">Genres: <%= data.media[i].genre.join(', ') %></div>
+				  </li>
+				  <% } %>
+				</ul>
 			</div>
 		</div>
 	</div>
