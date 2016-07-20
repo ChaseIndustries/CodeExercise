@@ -66,6 +66,7 @@ gulp.task('default', ['concat', 'js', 'sass', 'ejs', 'watch'], function() {
   app.get('/', function(req, res) {
     res.render('pages/index');
   });
-    
+  
   app.listen(9000);
+  console.log('Listening on localhost:9000');
 });
