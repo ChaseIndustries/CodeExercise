@@ -71,9 +71,7 @@
       margin-left:-10px;
       top:-12px;
     }
-    @media(min-width:1025px) {
-      width:200px;
-    }
+    width:200px;
     height:300px;
     overflow: auto;
     position:absolute;
@@ -104,9 +102,15 @@
   clear:both;
   list-style: none;
   margin-bottom:15px;
+  font-size:0; // this gets rid of unwanted space between <li>s
+  padding:0;
   li {
-    float:left;
-    width:50%;
+    display:none;
+  }
+  li.visible {
+    font-size:1rem;
+    display:inline-block;
+    vertical-align: top;
     box-sizing:border-box;
     padding-left:15px;
     padding-right:15px;
@@ -115,15 +119,10 @@
       width:100%;
     }
     @media(max-width:1024px) {
-      &:nth-of-type(2n+1) {
-        clear:both;
-      }
+      width:50%;
     }
     @media(min-width:1025px) {  
       width:30%;
-      &:visible:nth-of-type(3n+1) {
-        clear:both;
-      }
     }
   }
 }

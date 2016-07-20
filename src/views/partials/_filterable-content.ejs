@@ -50,19 +50,19 @@
 						<input type="text">
 					</div>
 				</div>
-				<div class="filters">
-          <div class="filter options" data-filter="type">
+				<div class="filters filter" data-filter="type">
+          <div>
   						<input type="radio" value="movie" name="type[]" id="filter-movies">
   						<label for="filter-movies">Movies</label>
-  					</div>
-  					<div class="filter options" data-filter="type">
-  						<input type="radio" value="book" name="type[]" id="filter-books">
-  						<label for="filter-books">Books</label>
-  					</div>
-  					<div class="clear-filters">
-  						<a href="#">Clear filters</a>
-  					</div>
-  				</div>
+					</div>
+					<div>
+						<input type="radio" value="book" name="type[]" id="filter-books">
+						<label for="filter-books">Books</label>
+					</div>
+					<div class="clear-filters">
+						<a href="#">Clear filters</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -70,8 +70,12 @@
 		<div>
 			<div >
 				<ul class="media-list">
+				  <% data.media = data.media.sort(function(a, b) {
+              var x = a['title'].toLowerCase(); var y = b['title'].toLowerCase();
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          }); %>
 				  <% for(var i=0;i < data.media.length;i++){ %>
-				  <li data-genre="<%= data.media[i].genre.join(' ') %>" data-year="<%=data.media[i].year %>" data-type="<%=data.media[i].type %>">
+				  <li class="visible" data-genre="<%= data.media[i].genre.join(' ') %>" data-year="<%=data.media[i].year %>" data-type="<%=data.media[i].type %>">
 				  <div class="poster"><img src="<%= data.media[i].poster %>" /></div>
 				  <div class="media-title"><h3><%=data.media[i].title %> (<%=data.media[i].year %>)</h3></div>
 				  <div class="media-genres">Genres: <%= data.media[i].genre.join(', ') %></div>

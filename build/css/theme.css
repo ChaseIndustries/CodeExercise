@@ -67,7 +67,8 @@ div {
     vertical-align: middle; }
   @media (max-width: 1024px) {
     .cta-quote .button.cta {
-      margin: auto; } }
+      margin: auto;
+      width: 100%; } }
   @media (min-width: 1025px) {
     .cta-quote .button.cta {
       position: absolute;
@@ -122,6 +123,7 @@ div {
     background: #fff;
     border: 1px solid #ccc;
     top: 20px;
+    width: 200px;
     height: 300px;
     overflow: auto;
     position: absolute;
@@ -143,9 +145,6 @@ div {
       border-color: transparent transparent #fff transparent;
       margin-left: -10px;
       top: -12px; }
-    @media (min-width: 1025px) {
-      .filterable-content .select-list {
-        width: 200px; } }
     .filterable-content .select-list ul {
       list-style: none;
       margin: 0;
@@ -164,21 +163,24 @@ div {
   overflow: hidden;
   clear: both;
   list-style: none;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  font-size: 0;
+  padding: 0; }
   .media-list li {
-    float: left;
-    width: 50%;
+    display: none; }
+  .media-list li.visible {
+    font-size: 1rem;
+    display: inline-block;
+    vertical-align: top;
     box-sizing: border-box;
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 15px; }
-    .media-list li img {
+    .media-list li.visible img {
       width: 100%; }
     @media (max-width: 1024px) {
-      .media-list li:nth-of-type(2n+1) {
-        clear: both; } }
+      .media-list li.visible {
+        width: 50%; } }
     @media (min-width: 1025px) {
-      .media-list li {
-        width: 30%; }
-        .media-list li:visible:nth-of-type(3n+1) {
-          clear: both; } }
+      .media-list li.visible {
+        width: 30%; } }
