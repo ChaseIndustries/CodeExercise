@@ -51,8 +51,8 @@
         row.addClass('visible');
       }
     });
+    $('.no-results').remove();
     if(!$('.media-list li.visible').length) {
-      $('.no-results').remove();
       $('.media-list').after('<div class="no-results">There were no results with the filters you specified</div>');
     }
   }
